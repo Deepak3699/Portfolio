@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Deepak</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --admin-glass: rgba(255, 255, 255, 0.03);
+            --admin-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            cursor: default; /* Revert cursor for admin */
+            overflow-y: auto;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 40px;
+            min-height: 80vh;
+        }
+
+        .glass-panel {
+            background: var(--admin-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--admin-border);
+            border-radius: var(--border-radius-xl);
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Login Form */
+        #login-section {
+            max-width: 450px;
+            margin: 15vh auto;
+            text-align: center;
+        }
+
+        .login-header {
+            margin-bottom: 40px;
+        }
+
+        .login-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        /* Dashboard Section */
+        #dashboard-section {
+            display: none;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--admin-border);
+        }
+
+        .messages-table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            padding: 16px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--admin-border);
+        }
+
+        td {
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--admin-border);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .msg-text {
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .timestamp {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .btn-delete {
+            background: rgba(255, 107, 107, 0.1);
+            color: var(--accent-warm);
+            padding: 8px 12px;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .btn-delete:hover {
+            background: var(--accent-warm);
+            color: white;
+        }
+
+        .logout-btn {
+            background: var(--admin-glass);
+            border: 1px solid var(--admin-border);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: var(--border-radius-pill);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        .logout-btn:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Form styling same as index */
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+            text-align: left;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-primary);
+            outline: none;
+            transition: var(--transition-fast);
+        }
+
+        input:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- LOGIN SECTION -->
+        <div id="login-section" class="glass-panel">
+            <div class="login-header">
+                <h1>Admin Login<span class="accent-dot">.</span></h1>
+                <p style="color: var(--text-secondary);">Secure access to your messages</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">
+                    <span>Login Securely</span>
+                    <i class="fa-solid fa-lock"></i>
+                </button>
+                <div id="login-error" style="color: var(--accent-warm); margin-top: 15px; font-size: 0.9rem; display: none;"></div>
+            </form>
+        </div>
+
+        <!-- DASHBOARD SECTION -->
+        <div id="dashboard-section" class="glass-panel">
+            <div class="dash-header">
+                <div>
+                    <h2 class="section-title" style="margin: 0; font-size: 2rem;">Messages<span class="accent-dot">.</span></h2>
+                    <p style="color: var(--text-secondary); margin-top: 5px;">Total messages: <span id="msg-count">0</span></p>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+
+            <div class="spinner" id="loader"></div>
+            
+            <div class="messages-table-wrapper">
+                <table id="messages-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>From</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messages-body">
+                        <!-- Messages will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="no-messages" style="text-align: center; padding: 40px; display: none;">
+                <i class="fa-regular fa-envelope-open" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 15px; display: block;"></i>
+                <p style="color: var(--text-secondary);">No messages found yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = ''; // Relative paths since we serve from same origin
+
+        // Check for existing session
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('admin_token');
+            if (token) {
+                showDashboard();
+            }
+        });
+
+        // Handle Login
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('login-error');
+
+            try {
+                const res = await fetch(`${API_URL}/api/admin/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    localStorage.setItem('admin_token', data.token);
+                    showDashboard();
+                } else {
+                    errorDiv.textContent = data.message || 'Invalid credentials';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorDiv.textContent = 'Server connection failed';
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        async function showDashboard() {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dashboard-section').style.display = 'block';
+            fetchMessages();
+        }
+
+        async function fetchMessages() {
+            const token = localStorage.getItem('admin_token');
+            const loader = document.getElementById('loader');
+            const tbody = document.getElementById('messages-body');
+            const noMsg = document.getElementById('no-messages');
+            
+            loader.style.display = 'block';
+            tbody.innerHTML = '';
+            noMsg.style.display = 'none';
+
+            try {
+                const res = await fetch(`${API_URL}/api/admin/messages`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    const messages = data.messages;
+                    document.getElementById('msg-count').textContent = messages.length;
+                    
+                    if (messages.length === 0) {
+                        noMsg.style.display = 'block';
+                    } else {
+                        messages.forEach(msg => {
+                            const date = new Date(msg.timestamp).toLocaleString();
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td class="timestamp">${date}</td>
+                                <td style="font-weight: 600; color: var(--text-primary);">${msg.name}</td>
+                                <td>${msg.email}</td>
+                                <td><div class="msg-text">${msg.message}</div></td>
+                                <td>
+                                    <button class="btn-delete" onclick="deleteMessage(${msg.id})">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </td>
+                            `;
+                            tbody.appendChild(tr);
+                        });
+                    }
+                } else {
+                    alert('Session expired. Please login again.');
+                    logout();
+                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                loader.style.display = 'none';
+            }
+        }
+
+        async function deleteMessage(id) {
+            if (!confirm('Are you sure you want to delete this message?')) return;
+            
+            const token = localStorage.getItem('admin_token');
+            try {
+                const res = await fetch(`${API_URL}/api/admin/messages/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+                if (data.success) fetchMessages();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('admin_token');
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

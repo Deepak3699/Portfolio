@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deepak — Creative UI/UX Designer & Developer</title>
+  <meta name="description"
+    content="Portfolio of Deepak, a creative UI/UX designer and front-end developer from India specializing in modern web experiences.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-outline" id="cursor-outline"></div>
+
+  <!-- BACKGROUND PARTICLES -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <span class="loader-text">DEEP</span>
+    </div>
+  </div>
+
+  <!-- HEADER / NAVIGATION -->
+  <header id="header">
+    <div class="header-container">
+      <div class="left-section">
+        <div class="logo">
+          <img src="logo.jpg" alt="Deepak Logo">
+        </div>
+        <h1 class="logo-text">DEEP<span class="accent-dot">.</span></h1>
+      </div>
+
+      <nav class="right-section">
+        <div class="nav-links">
+          <a href="#home" class="nav-link active" data-section="home">Home</a>
+          <a href="#about" class="nav-link" data-section="about">About</a>
+          <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+          <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+          <a href="#education" class="nav-link" data-section="education">Education</a>
+          <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home" class="mobile-nav-link">Home</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#projects" class="mobile-nav-link">Projects</a>
+    <a href="#skills" class="mobile-nav-link">Skills</a>
+    <a href="#education" class="mobile-nav-link">Education</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-greeting reveal-up">
+          <span class="greeting-line"></span>
+          Hello, I'm
+        </p>
+        <h2 class="hero-name reveal-up">Deepak<span class="accent-dot">.</span></h2>
+        <h3 class="hero-title reveal-up">
+          <span class="typing-wrapper">
+            <span id="typed-text"></span>
+            <span class="typing-cursor">|</span>
+          </span>
+        </h3>
+        <p class="hero-description reveal-up">
+          I craft beautiful, user-centric digital experiences with clean code and thoughtful design. Turning ideas into
+          pixel-perfect interfaces.
+        </p>
+        <div class="hero-cta reveal-up">
+          <a href="#contact" class="btn-primary" id="btn-contact-hero">
+            <span>Get in Touch</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#projects" class="btn-outline" id="btn-projects-hero">
+            <span>View Work</span>
+          </a>
+        </div>
+        <div class="hero-stats reveal-up">
+          <div class="stat-item">
+            <span class="stat-number" data-target="2">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Years Exp.</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-spline reveal-up">
+        <div class="spline-wrapper">
+          <iframe src="https://my.spline.design/genkubgreetingrobot-o0VqHzJA6hmKFeJRZCvKzg4A/" frameborder="0"
+            width="100%" height="100%" title="3D Robot Animation" loading="lazy">
+          </iframe>
+          <div class="spline-glow"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <div class="section-header reveal-up">
+      <span class="section-tag">About Me</span>
+      <h2 class="section-title">Passionate <span class="text-gradient">Designer</span> & Developer</h2>
+    </div>
+    <div class="about-content">
+      <div class="about-image reveal-up">
+        <div class="image-frame">
+          <img src="pp.jpg" alt="Deepak - UI/UX Designer">
+          <div class="image-border"></div>
+        </div>
+      </div>
+      <div class="about-text reveal-up">
+        <p>
+          I'm <strong>Deepak</strong> — a dedicated UI/UX designer and front-end developer based in India.
+          My journey into design and development stems from a passion for clean, user-centered interfaces
+          that don't just look great but feel intuitive.
+        </p>
+        <p>
+          With a strong foundation in <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>,
+          I enjoy turning simple ideas into elegant, user-friendly websites. I'm currently expanding my skill set
+          with <strong>React</strong>, <strong>Bootstrap</strong>, and <strong>responsive design</strong> to build
+          dynamic, mobile-friendly web experiences.
+        </p>
+        <p>
+          When I'm not coding, I enjoy learning new tech trends and enhancing user experience through design thinking.
+          I believe great design is invisible — it just works.
+        </p>
+        <div class="about-info-grid">
+          <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>India</span>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Available for Freelance</span>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>B.Tech in CS</span>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-code"></i>
+            <span>Front-End Developer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="projects-section">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title">Selected <span class="text-gradient">Works</span></h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal-up">
+        <div class="project-img">
+          <div class="project-overlay">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+          <div class="project-number">01</div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span>React</span>
+            <span>CSS</span>
+            <span>E-Commerce</span>
+          </div>
+          <h3>Neon E-Commerce</h3>
+          <p>A fully responsive e-commerce platform built with React and Framer Motion, featuring seamless cart
+            transitions.</p>
+          <div class="project-links">
+            <a href="#" aria-label="Live Demo" id="project-1-demo"><i
+                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+            <a href="#" aria-label="GitHub" id="project-1-github"><i class="fa-brands fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up">
+        <div class="project-img">
+          <div class="project-overlay">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+          <div class="project-number">02</div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span>Chart.js</span>
+            <span>GSAP</span>
+            <span>Dashboard</span>
+          </div>
+          <h3>Fintech Dashboard</h3>
+          <p>High-performance data visualization dashboard using Chart.js, GSAP, and dark-mode UI principles.</p>
+          <div class="project-links">
+            <a href="#" aria-label="Live Demo" id="project-2-demo"><i
+                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+            <a href="#" aria-label="GitHub" id="project-2-github"><i class="fa-brands fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up">
+        <div class="project-img">
+          <div class="project-overlay">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+          <div class="project-number">03</div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span>WebGL</span>
+            <span>Three.js</span>
+            <span>Landing</span>
+          </div>
+          <h3>Web3 Landing Page</h3>
+          <p>Futuristic promotional page for a blockchain startup featuring scroll-jacking and 3D WebGL elements.</p>
+          <div class="project-links">
+            <a href="#" aria-label="Live Demo" id="project-3-demo"><i
+                class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+            <a href="#" aria-label="GitHub" id="project-3-github"><i class="fa-brands fa-github"></i> Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="skills-section">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Expertise</span>
+      <h2 class="section-title">Tech <span class="text-gradient">Stack</span></h2>
+    </div>
+    <div class="skills-container reveal-up">
+      <div class="skill-badge">
+        <i class="fa-brands fa-html5"></i>
+        <span>HTML5</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-brands fa-css3-alt"></i>
+        <span>CSS3</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-brands fa-js"></i>
+        <span>JavaScript</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-brands fa-react"></i>
+        <span>React</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-brands fa-node-js"></i>
+        <span>Node.js</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-brands fa-git-alt"></i>
+        <span>Git</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-solid fa-code"></i>
+        <span>GSAP</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-solid fa-cube"></i>
+        <span>Three.js</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-brands fa-bootstrap"></i>
+        <span>Bootstrap</span>
+      </div>
+      <div class="skill-badge">
+        <i class="fa-solid fa-database"></i>
+        <span>MySQL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="education-section">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Background</span>
+      <h2 class="section-title">Education & <span class="text-gradient">Certifications</span></h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-badge">Education</div>
+          <h3>Bachelor of Technology in Computer Science</h3>
+          <p class="timeline-meta"><i class="fa-solid fa-building-columns"></i> IKG PTU University &bull; 2024 – 2027
+          </p>
+          <p>Specialized in software engineering, data structures, and web development. Graduated with distinction.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-badge">Education</div>
+          <h3>Diploma in Computer Science & Engineering</h3>
+          <p class="timeline-meta"><i class="fa-solid fa-building-columns"></i> P.T JR Govt Polytechnic College, HSP
+            &bull; 2021 – 2024</p>
+          <p>Focused on Mathematics, Physics, and Computer Science. Completed with honors.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-badge">Education</div>
+          <h3>Senior Secondary School (Commerce)</h3>
+          <p class="timeline-meta"><i class="fa-solid fa-building-columns"></i> GOVT High School &bull; 2018 – 2020</p>
+          <p>Focused on Accounts, Business, and Economics. Completed with honors.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-badge certification">Certification</div>
+          <h3>Deloitte — Cyber Security Basics</h3>
+          <p class="timeline-meta"><i class="fa-solid fa-certificate"></i> Deloitte</p>
+          <p>Specialized in cyber security fundamentals and best practices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Get in Touch</span>
+      <h2 class="section-title">Let's Work <span class="text-gradient">Together</span></h2>
+    </div>
+
+    <div class="contact-wrapper">
+      <div class="contact-info reveal-up">
+        <p class="contact-description">
+          Have a project in mind or just want to chat? Feel free to reach out. I'm always open to new opportunities and
+          collaborations.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <span class="detail-label">Email</span>
+              <span class="detail-value">deepak@example.com</span>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <span class="detail-label">Location</span>
+              <span class="detail-value">India</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <h4>Follow Me</h4>
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook" id="social-facebook"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter" id="social-twitter"><i
+                class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram" id="social-instagram"><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" aria-label="YouTube" id="social-youtube"><i
+                class="fab fa-youtube"></i></a>
+            <a href="https://github.com" target="_blank" aria-label="GitHub" id="social-github"><i
+                class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" id="social-linkedin"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <form id="contact-form" class="contact-form reveal-up">
+        <div class="form-group">
+          <input type="text" id="name" name="name" required placeholder=" ">
+          <label for="name">Your Name</label>
+          <div class="form-line"></div>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" required placeholder=" ">
+          <label for="email">Your Email</label>
+          <div class="form-line"></div>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+          <label for="message">Your Message</label>
+          <div class="form-line"></div>
+        </div>
+        <button type="submit" class="btn-primary btn-submit" id="btn-submit-contact">
+          <span>Send Message</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>DEEP<span class="accent-dot">.</span></h3>
+        <p>Crafting digital experiences with passion.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Deepak. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==========================================
+    // LOADING SCREEN
+    // ==========================================
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        document.body.classList.add('loaded');
+        animateCounters();
+      }, 1500);
+    });
+
+    // ==========================================
+    // CUSTOM CURSOR
+    // ==========================================
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorOutline = document.getElementById('cursor-outline');
+
+    let mouseX = 0, mouseY = 0;
+    let outlineX = 0, outlineY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top = mouseY + 'px';
+    });
+
+    function animateCursor() {
+      outlineX += (mouseX - outlineX) * 0.15;
+      outlineY += (mouseY - outlineY) * 0.15;
+      cursorOutline.style.left = outlineX + 'px';
+      cursorOutline.style.top = outlineY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Enlarge cursor on interactive elements
+    document.querySelectorAll('a, button, .project-card, .skill-badge, .nav-link').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorOutline.classList.add('cursor-hover');
+        cursorDot.classList.add('cursor-hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorOutline.classList.remove('cursor-hover');
+        cursorDot.classList.remove('cursor-hover');
+      });
+    });
+
+    // ==========================================
+    // PARTICLES
+    // ==========================================
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(138, 138, 138, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+    initParticles();
+
+    function drawLines() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(100, 100, 100, ${0.15 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      drawLines();
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ==========================================
+    // HEADER SCROLL EFFECT
+    // ==========================================
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // ==========================================
+    // MOBILE NAVIGATION
+    // ==========================================
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    // ==========================================
+    // TYPING ANIMATION
+    // ==========================================
+    const titles = [
+      'UI/UX Designer',
+      'Front-End Developer',
+      'Creative Thinker',
+      'Web Designer'
+    ];
+    let titleIndex = 0, charIndex = 0, isDeleting = false;
+    const typedText = document.getElementById('typed-text');
+
+    function typeEffect() {
+      const current = titles[titleIndex];
+      if (isDeleting) {
+        typedText.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedText.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let speed = isDeleting ? 40 : 80;
+
+      if (!isDeleting && charIndex === current.length) {
+        speed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        titleIndex = (titleIndex + 1) % titles.length;
+        speed = 500;
+      }
+
+      setTimeout(typeEffect, speed);
+    }
+    typeEffect();
+
+    // ==========================================
+    // SCROLL REVEAL ANIMATIONS
+    // ==========================================
+    const revealElements = document.querySelectorAll('.reveal-up');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ==========================================
+    // ACTIVE NAV LINK ON SCROLL
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // ==========================================
+    // COUNTER ANIMATION
+    // ==========================================
+    function animateCounters() {
+      document.querySelectorAll('.stat-number').forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 2000;
+        const start = performance.now();
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }
+
+    // ==========================================
+    // CONTACT FORM
+    // ==========================================
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData.entries());
+      const btn = contactForm.querySelector('.btn-submit');
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        
+        if (response.ok) {
+          alert('Thank you! Your message has been sent successfully.');
+          contactForm.reset();
+        } else {
+          alert('Oops! ' + (result.message || 'Something went wrong. Please try again.'));
+        }
+      } catch (error) {
+        alert('Connection error. Please check your internet and try again.');
+      } finally {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    });
+
+    // ==========================================
+    // SMOOTH SCROLL FOR NAV LINKS
+    // ==========================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
