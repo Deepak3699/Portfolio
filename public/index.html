@@ -445,6 +445,7 @@
           <span>Send Message</span>
           <i class="fa-solid fa-paper-plane"></i>
         </button>
+        <div id="success-msg" class="success-msg">Message successfully sent!</div>
       </form>
     </div>
   </section>
@@ -737,8 +738,12 @@
         const result = await response.json();
         
         if (response.ok) {
-          alert('Thank you! Your message has been sent successfully.');
           contactForm.reset();
+          const successMsg = document.getElementById('success-msg');
+          successMsg.style.display = 'block';
+          setTimeout(() => {
+            successMsg.style.display = 'none';
+          }, 5000);
         } else {
           alert('Oops! ' + (result.message || 'Something went wrong. Please try again.'));
         }
