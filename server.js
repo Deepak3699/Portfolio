@@ -16,36 +16,45 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // PostgreSQL Pool setup
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false // Required for Neon and other hosted PG services
-  }
-});
+let pool = null;
+if (process.env.DATABASE_URL) {
+  pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false // Required for Neon and other hosted PG services
+    }
+  });
 
-// Initialize Database Table
-const initDb = async () => {
-  try {
-    await pool.query(`
-      CREATE TABLE IF NOT EXISTS messages (
-        id SERIAL PRIMARY KEY,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        message TEXT NOT NULL,
-        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    `);
-    console.log('PostgreSQL Table ready.');
-  } catch (err) {
-    console.error('Error initializing PostgreSQL:', err.message);
-  }
-};
-initDb();
+  // Initialize Database Table
+  const initDb = async () => {
+    try {
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS messages (
+          id SERIAL PRIMARY KEY,
+          name TEXT NOT NULL,
+          email TEXT NOT NULL,
+          message TEXT NOT NULL,
+          timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
+      console.log('PostgreSQL Table ready.');
+    } catch (err) {
+      console.error('Error initializing PostgreSQL:', err.message);
+    }
+  };
+  initDb();
+} else {
+  console.warn('Warning: DATABASE_URL is not set. Database features will be disabled.');
+}
 
 // API Endpoints
 
 // 1. Submit a message
 app.post('/api/contact', async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({ success: false, message: 'Database is not configured.' });
+  }
+
   const { name, email, message } = req.body;
   
   if (!name || !email || !message) {
@@ -78,6 +87,10 @@ app.post('/api/admin/login', (req, res) => {
 
 // 3. Get all messages (Protected)
 app.get('/api/admin/messages', async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({ success: false, message: 'Database is not configured.' });
+  }
+
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
@@ -103,6 +116,10 @@ app.get('/api/admin/messages', async (req, res) => {
 
 // 4. Delete a message (Protected)
 app.delete('/api/admin/messages/:id', async (req, res) => {
+  if (!pool) {
+    return res.status(503).json({ success: false, message: 'Database is not configured.' });
+  }
+
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
@@ -120,6 +137,11 @@ app.delete('/api/admin/messages/:id', async (req, res) => {
       res.status(500).json({ success: false, message: 'Delete failed.' });
     }
   });
+});
+
+// Serve admin panel
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
 // Serve frontend for all other routes
